@@ -1,0 +1,61 @@
+CREATE SCHEMA `juno` ;
+
+CREATE TABLE `juno`.`usuarios` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `senha` VARCHAR(200) NOT NULL,
+  `genero` VARCHAR(20) NOT NULL,
+  `estado` VARCHAR(45) NOT NULL,
+  `cidade` VARCHAR(255) NOT NULL,
+  `endereco` VARCHAR(500) NOT NULL,
+  `telefone` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+
+INSERT INTO `juno`.`usuarios` (`id`, `nome`, `email`, `senha`, `genero`, `estado`, `cidade`, `endereco`, `numero`) VALUES ('1', 'gus', 'gus@email.com', 'gus12345', 'homem', 'Ceará', 'Fortaleza', 'Rua do Gustavo n° 20', '20 99292-1414');
+
+ALTER TABLE `juno`.`usuarios` 
+CHANGE COLUMN `endereco` `endereco` VARCHAR(500) NOT NULL ;
+
+ALTER TABLE `juno`.`usuarios` CHANGE COLUMN `numero` `telefone` VARCHAR(45) NOT NULL ;
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'gusSql123';
+
+CREATE TABLE `juno`.`produtos` (
+  `id_prod` VARCHAR(20) NOT NULL,
+  `nome` VARCHAR(500) NOT NULL,
+  `tipo` VARCHAR(45) NOT NULL,
+  `preco` INT NOT NULL,
+  `cor` VARCHAR(255) NOT NULL,
+  `tamanho` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_prod`));
+
+INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('cmstbm1', 'Camiseta básica masculina', 'camiseta', '8500', '[\'preto\', \'branco\', \'marrom\']', '[\'PP\', \'P\', \'M\', \'G\', \'GG\']');
+
+CREATE TABLE `juno`.`compras` (
+  `id_compra` INT NOT NULL AUTO_INCREMENT,
+  `data` DATE NOT NULL,
+  `hora` TIME NOT NULL,
+  `compra` VARCHAR(2000) NOT NULL,
+  `preco` INT NOT NULL,
+  `id_usuario` INT NOT NULL,
+  PRIMARY KEY (`id_compra`),
+  CONSTRAINT `id_usuario`
+    FOREIGN KEY (`id_usuario`)
+    REFERENCES `juno`.`usuarios` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
+
+
+
+forte@hotmail.com
+jhyfjkH3is9
+
+julia@gmail.com
+cunt883gYU#j
+
+amanda@gmail.com
+df78Ja#sd432
+

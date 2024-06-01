@@ -1,0 +1,89 @@
+#alterarBtn:hover {
+  border-color: black;
+}
+
+#removerBtn:hover {
+  color: #bb0202;
+}
+
+#limparBtn:hover {
+  border-color: #e31e1e;
+  color: #e31e1e;
+}
+
+
+
+
+@media only screen and (max-width: 1100px) {
+  #carrinhobody {
+    display: flex;
+    flex-direction: column;
+    padding-top: 25px;
+  }
+}
+
+
+
+
+@media only screen and (max-width: 800px) {
+  #carrinhosection {
+    padding-left: 10px;
+  }
+}
+
+
+
+
+@media only screen and (max-width: 550px) {
+  #carrinhobody {
+    padding-top: 15px;
+  }
+  #imgDiv {
+    height: 110px;
+  }
+  #itemNome {
+    font-size: 17px;
+  }
+  #itemPreco {
+    font-size: 17px;
+  }
+  #itemMid {
+    flex-direction: column;
+    row-gap: 4px;
+  }
+  #itemEsp {
+    font-size: 16px;
+  }
+  #alterarBtn {
+    font-size: 16px;
+  }
+  #removerBtn {
+    font-size: 15px;
+  }
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+  #alterarItemContainer {
+    width: auto;
+  }
+  #nomeAlt {
+    font-size: 18px;
+  }
+  #imgAlt {
+    height: 250px;
+  }
+  #altBtn {
+    width: 150px;
+    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  #precoAlt {
+    font-size: 20px;
+  }
+}
