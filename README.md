@@ -1,3 +1,5 @@
+Abra este arquivo no modo "Code" para melhor visualização.
+
 Antes de clonar o projeto, crie o banco de dados e as tabelas com os seguintes passos:
   1. CREATE SCHEMA `juno`;
   2. CREATE TABLE `juno`.`usuarios` (
