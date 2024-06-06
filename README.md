@@ -1,6 +1,10 @@
 Abra este arquivo no modo "Code" para melhor visualização.
 
-Antes de clonar o projeto, crie o banco de dados e as tabelas com os seguintes passos:
+Necessário ter o mysql instalado. Caso não tenha, baixe e instale o mysql e o workbench:
+ - https://dev.mysql.com/downloads/installer/
+ - https://dev.mysql.com/downloads/workbench/
+
+Antes de clonar o projeto, crie o banco de dados e as tabelas no workbench com os seguintes passos:
   1. CREATE SCHEMA `juno`;
   2. CREATE TABLE `juno`.`usuarios` (
       `id` INT NOT NULL AUTO_INCREMENT,
@@ -34,18 +38,26 @@ Antes de clonar o projeto, crie o banco de dados e as tabelas com os seguintes p
         REFERENCES `juno`.`usuarios` (`id`)
         ON DELETE CASCADE
         ON UPDATE CASCADE);
+  5. Registre os dados dos produtos com o comando que está aqui: https://github.com/rgustavo03/Juno/blob/main/produtos.txt
 
 
 No VS Code, para clonar o projeto, siga os seguinte passos:
   1. Abra um terminal e clone o projeto dentro de sua pasta de projetos:
     - git clone https://github.com/rgustavo03/Juno.git
-  2. Após baixar todos os arquivos, abra um novo terminal e digite:
+  2. Vá à pasta "Juno", depois "back" e abra "index.js" e certifique-se que
+     os dados de conexão com o banco de daos estão corretos(coloque os seus):
+    - host na linha 9
+    - user na linha 10
+    - password na linha 11
+    - nome do banco na linha 12
+  3. Abra um novo terminal e digite:
     - cd Juno (esta etapa pode ser evitada se abrir a pasta Juno na opção "Open Folder" em "File" no canto superior esquerdo)
     - cd back
     - npm run start
   4. Abra um novo terminal e digite:
     - cd Juno (esta etapa pode ser evitada se abrir a pasta Juno na opção "Open Folder" em "File" no canto superior esquerdo)
     - cd front
+    - npm i
     - npm run start
         Caso apareça o erro "'react-scripts' não é reconhecido como um comando interno
         ou externo, um programa operável ou um arquivo em lotes.", execute este comando:
