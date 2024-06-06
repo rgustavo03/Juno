@@ -16,7 +16,7 @@ export function Header() {
     if(window.location.pathname.includes('produto')) {
       return '/home'
     }
-    else if(window.location.pathname == '/') {
+    else if(window.location.pathname === '/') {
       return '/home'
     }
     else {
@@ -26,7 +26,7 @@ export function Header() {
 
   const navigate = useNavigate();
 
-  const { logged, setLogged, user, setUser, cartProv, setCartProv } = useContext(UserContext);
+  const { logged, setLogged, setUser, cartProv } = useContext(UserContext);
 
   // get carrinho. cart.length
   const { getQtdCarrinho, limparCarrinho } = useCarrinho('cartStorage');
