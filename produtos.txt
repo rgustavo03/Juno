@@ -1,4 +1,4 @@
-Comando SQL para registrar todos os produtos:
+Comando SQL para registrar todos os produtos(tudo de uma vez):
 
 INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('blscmc1', 'Blusa Manga Comprida', 'torço', '9800', '[\"preto\",\"branco\"]', '[\"M\",\"G\"]');
 INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('blspaf1', 'Blusa Plissada Azul Feminina', 'torço', '8400', '[\"unico\"]', '[\"PP\",\"P\",\"M\",\"G\",\"GG\"]');
