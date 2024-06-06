@@ -12,6 +12,7 @@ interface itemFormato {
   tamanho: string,
   qtd: number,
 }
+
 interface ProdutoTipo {
   id: string,
   nome: string,
@@ -19,21 +20,6 @@ interface ProdutoTipo {
   preco: number,
   cor: string[],
   tamanho: string[]
-}
-
-const produto: ProdutoTipo = {
-  id: '',
-  nome: '',
-  tipo: '',
-  preco: NaN,
-  cor: [],
-  tamanho: []
-}
-const produtoPrev: itemFormato = {
-  id: '',
-  cor: '',
-  tamanho: '',
-  qtd: NaN
 }
 
 type funcBoolean = (a: boolean) => void;
@@ -183,12 +169,6 @@ const AlterItemInfo = styled.div`
   column-gap: 15px;
   justify-content: center;
   align-items: center;
-`
-
-const Box = styled.div`
-  height: 42px;
-  aspect-ratio: 1 / 1;
-  background: rgba(0,0,0);
 `
 
 const Quantidade = styled.div`
