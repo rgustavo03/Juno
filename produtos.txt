@@ -1,2 +1,3 @@
 Comando SQL para registrar todos os produtos:
 
+INSERT
