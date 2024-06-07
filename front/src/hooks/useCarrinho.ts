@@ -79,7 +79,7 @@ export const useCarrinho = (key: string) => {
   const addCarrinho = (itemAlt: itemFormato) => {
 
     // criar array com formato definido na interface
-    let cart: itemCart[] = JSON.parse(localStorage.getItem(key)!);
+    let cart: itemCart[] = JSON.parse(localStorage.getItem(key) || '[]');
 
     if(checkInCarrinho(itemAlt)) { // se o item ja estiver no cartStorage
       // apenas alterar a quantidade - qtd anterior + nova qtd
