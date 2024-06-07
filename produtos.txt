@@ -1,6 +1,6 @@
 Comando SQL para registrar todos os produtos(tudo de uma vez):
 
-INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('blscmc1', 'Blusa Manga Comprida', 'torço', '9800', '[\"preto\",\"branco\"]', '[\"M\",\"G\"]');
+INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('blscmc1', 'Blusa Manga Comprida', 'torço', '9800', '[\"preto\",\"cinza\"]', '[\"M\",\"G\"]');
 INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('blspaf1', 'Blusa Plissada Azul Feminina', 'torço', '8400', '[\"unico\"]', '[\"PP\",\"P\",\"M\",\"G\",\"GG\"]');
 INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('blzfcb1', 'Blazer Preto Feminino Camisa Branca', 'terno', '34000', '[\"unico\"]', '[\"P\",\"M\",\"G\"]');
 INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('blzpcbglx1', 'Blazer Preto Camisa Branca Gravata Listrada Roxa', 'terno', '42000', '[\"unico\"]', '[\"M\",\"G\"]');
