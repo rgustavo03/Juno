@@ -17,8 +17,6 @@ type itemCart = {
 
 type funcBoolean = (a: boolean) => void;
 
-type setCartType = (a: itemFormato[]) => void;
-
 type setItemType = (a: itemFormato) => void;
 
 
@@ -26,7 +24,7 @@ type setItemType = (a: itemFormato) => void;
 export const useCarrinho = (key: string) => {
 
   // define array igual ao que estah no localStorage -> se localStorage vazio: cartStorage = null
-  const [cartStorage, setCartStorage] = useState<itemFormato[]>(JSON.parse(localStorage.getItem(key)!));
+  const [cartStorage, setCartStorage] = useState<itemFormato[]>(JSON.parse(localStorage.getItem(key) || '[]'));
 
   const { cartProv, setCartProv } = useContext(UserContext);
 
