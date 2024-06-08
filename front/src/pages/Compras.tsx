@@ -76,10 +76,10 @@ export const Compras = () => {
       <Compra key={i}>
         <Top>
           <DataHora>
-            <Data>{dia}/{mes}/{ano},</Data>
-            <Hora>{hora.slice(0,5)}</Hora>
+            <Data id="data">{dia}/{mes}/{ano},</Data>
+            <Hora id="hora">{hora.slice(0,5)}</Hora>
           </DataHora>
-          <PrecoTotal>Preço da compra: R$ <N>{converterPreco(preco)}</N></PrecoTotal>
+          <PrecoTotal id="precoTotal">Total: R$ <N id="precoN">{converterPreco(preco)}</N></PrecoTotal>
         </Top>
 
         <Mid>
@@ -87,7 +87,7 @@ export const Compras = () => {
             {itens.map((item, i) => {
               //
               return (
-                <Item key={i}>
+                <Item id="item" key={i}>
                   <ImgDiv>
                     <Img src={require(`../img/produto/${item.id}/${item.id}_${item.cor}_low.png`)} alt={item.id} />
                   </ImgDiv>
@@ -113,7 +113,7 @@ export const Compras = () => {
 
       <ComprasMain id="comprasMain">
 
-        <Titulo>Suas compras, {user.nome}</Titulo>
+        <Titulo id="titulo">Suas compras, {user.nome}</Titulo>
 
         {mapCompras}
 
@@ -134,7 +134,7 @@ const ComprasPage = styled.section`
   font-family: var(--main-font);
 `
 const ComprasMain = styled.div`
-  min-width: 370px;
+  min-width: 360px;
   padding: 60px;
   background-color: white;
   display: flex;
@@ -150,7 +150,7 @@ const Titulo = styled.h2`
 `
 
 const Compra = styled.div`
-  min-width: 490px;
+  min-width: 310px;
   display: flex;
   flex-direction: column;
   row-gap: 7px;
