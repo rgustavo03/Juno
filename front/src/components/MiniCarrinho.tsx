@@ -7,13 +7,6 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import axios from "axios";
 
-interface itemFormato {
-  id: string,
-  cor: string,
-  tamanho: string,
-  qtd: number
-}
-
 type produtoTipo = {
   id: string,
   nome: string,

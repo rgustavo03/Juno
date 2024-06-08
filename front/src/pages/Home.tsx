@@ -41,10 +41,10 @@ export function Home() {
     if(!arrastar) return
 
     //if(poster + 1 == 6) {
-    if(poster + 1 == banners.length + 1) {
+    if(poster + 1 === banners.length + 1) {
       setPoster(1);
     } else {
-      if(poster == 1) {
+      if(poster === 1) {
         setPoster(2);
       } else {
         setPoster(p => p + 1);
@@ -167,7 +167,7 @@ export function Home() {
           {banners.map(b => {
             //
             return (
-              <PosterImg style={{ display: b == poster ? 'inline' : 'none'}} src={require(`../img/poster/${b}.jpg`)} />
+              <PosterImg style={{ display: b === poster ? 'inline' : 'none'}} src={require(`../img/poster/${b}.jpg`)} />
             )
           })}
           <PosterOpcContainer id="posterOpcContainer">
@@ -175,7 +175,7 @@ export function Home() {
               //
               return (
                 <PosterOpc className="posterOpc"
-                  style={{ backgroundColor: b == poster ? 'white' : 'rgba(255,255,255,0.3)' }}
+                  style={{ backgroundColor: b === poster ? 'white' : 'rgba(255,255,255,0.3)' }}
                   onClick={() => clickOpc(b)}
                 ></PosterOpc>
               )
@@ -187,28 +187,28 @@ export function Home() {
         <ListaTitulo id="listaTitulo">Camisetas, Blusas e Moletons</ListaTitulo>
           <ListaProdutos>
             {/*------ Array de produtos ------*/}
-            {torco.length != 0 && showTorco}
+            {torco.length !== 0 && showTorco}
           </ListaProdutos>
         </ListaCamisas>
         
         <ListaCalcas id="lista">
         <ListaTitulo id="listaTitulo">Calças, Shorts e Bermudas</ListaTitulo>
           <ListaProdutos>
-            {perna.length != 0 && showPerna}
+            {perna.length !== 0 && showPerna}
           </ListaProdutos>
         </ListaCalcas>
 
         <ListaCalcas id="lista">
         <ListaTitulo id="listaTitulo">Ternos, Roupas formais</ListaTitulo>
           <ListaProdutos>
-            {terno.length != 0 && showTerno}
+            {terno.length !== 0 && showTerno}
           </ListaProdutos>
         </ListaCalcas>
 
         <ListaCalcas id="lista">
         <ListaTitulo id="listaTitulo">Calças, Shorts e Bermudas</ListaTitulo>
           <ListaProdutos>
-            {acessorio.length != 0 && showAcessorio}
+            {acessorio.length !== 0 && showAcessorio}
           </ListaProdutos>
         </ListaCalcas>
 

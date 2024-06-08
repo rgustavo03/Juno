@@ -3,7 +3,7 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import styled from "styled-components"
 import { HeaderAlt } from "../components/HeaderAlt"
 import { RedCheck } from '../components/icons/red-check-icon';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 
 import { UserContext } from '../contexts/UserContext';
 
@@ -15,11 +15,6 @@ import axios from 'axios';
 type FormType = {
   email: string,
   senha: string
-}
-
-type UserType = {
-  id: string,
-  nome: string
 }
 
 type irParam = {
@@ -63,10 +58,10 @@ export const Entrar = () => {
           nome: response.data.c.nome
         });
         setLogged(response.data.r); // logado true
-        if(ir == 'home') {
+        if(ir === 'home') {
           navigate(`/`);
         }
-        else if(ir == 'compra') {
+        else if(ir === 'compra') {
           navigate('/carrinho');
         }
         else {
@@ -94,7 +89,7 @@ export const Entrar = () => {
         <form onSubmit={handleSubmit(submitLogin)}>
         <LogCadContainer>
 
-          <Titulo>Entre {ir == 'compra' && 'para finalizar compra'}</Titulo>
+          <Titulo>Entre {ir === 'compra' && 'para finalizar compra'}</Titulo>
 
           <DivInput>
             <Input id="email" type="text" placeholder='Email' {...register('email')} /> {/* input */}

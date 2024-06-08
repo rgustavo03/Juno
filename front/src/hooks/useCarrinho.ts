@@ -32,8 +32,6 @@ export const useCarrinho = (key: string) => {
   /****************************************************************************************/
   /****************************************************************************************/
 
-  const [check, setCheck] = useState<boolean>(false);
-
   const checkInCarrinho = (itemCheck: itemFormato) => {
 
     if(!cartStorage) { // cartStorage ainda nao criado
@@ -178,5 +176,5 @@ export const useCarrinho = (key: string) => {
     
   }
 
-  return { check, checkInCarrinho, getCarrinho, getQtdCarrinho, addCarrinho, removerCarrinho, alterItemCarrinho, limparCarrinho }
+  return { checkInCarrinho, getCarrinho, getQtdCarrinho, addCarrinho, removerCarrinho, alterItemCarrinho, limparCarrinho }
 }

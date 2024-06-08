@@ -22,12 +22,6 @@ type produtoTipo = {
   tamanho: string[],
   r: boolean
 }
-type itemCart = {
-  id: string,
-  cor: string,
-  tamanho: string,
-  qtd: number
-}
 
 type stringId = {
   produtoId: string;
@@ -152,7 +146,7 @@ export function Produto() {
               {produto.cor[0] &&
                 <ProdutoImg 
                   id="produtoImg" 
-                  src={require(`../img/produto/${produto.id}/${produto.id}_${img == '' ? produto.cor[0] : img}.png`)} 
+                  src={require(`../img/produto/${produto.id}/${produto.id}_${img === '' ? produto.cor[0] : img}.png`)} 
                   alt={produto.nome} 
                 />
               }

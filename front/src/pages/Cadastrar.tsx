@@ -23,11 +23,6 @@ type FormType = {
   confirmSenha: string
 }
 
-type UserType = {
-  id: string,
-  nome: string
-}
-
 type irParam = {
   ir: string;
 }
@@ -87,7 +82,7 @@ export const Cadastrar = () => {
   function handleChangeUf(event: ChangeEvent<HTMLSelectElement>) {
     const uf: string = event.target.value;
     ufs.map(u => {
-      if(u.nome == uf) {
+      if(u.nome === uf) {
         setEstado(u.id);
       }
     });
@@ -147,10 +142,10 @@ export const Cadastrar = () => {
         });
         setLogged(response.data.r); // Logado true
         // setStorage
-        if(ir == 'home') {
+        if(ir === 'home') {
           navigate(`/`);
         }
-        else if(ir == 'compra') {
+        else if(ir === 'compra') {
           navigate('/carrinho');
         }
         else {
