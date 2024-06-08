@@ -4,7 +4,7 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import '../css/produto.css';
 import { Arvore } from "../components/icons/arvore-icon";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ReactDOMServer from 'react-dom/server';
 import { useCarrinho } from "../hooks/useCarrinho";
 import { converterPreco } from "../functions/ConverterPreco";
@@ -34,31 +34,32 @@ export function Produto() {
   // get parameter MELHORAR
   const { produtoId } = useParams<stringId>();
 
+  const voltar = useCallback((h: string) => {
+    navigate(h, { replace: true });
+  }, [navigate]);
+
   const [produto, setProduto] = useState<produtoTipo>({id: '', nome: '', tipo: '', preco: 0, cor: [], tamanho: [], r: false});
 
   useEffect(() => {
-    const findProduto = async (id: string) => {
-      axios.get('http://localhost:3001/item', {
-        params: { id: id }
+    axios.get('http://localhost:3001/item', {
+      params: { id: produtoId }
+    })
+    .then(response => {
+      setProduto({
+        id: response.data[0].id_prod,
+        nome: response.data[0].nome,
+        tipo: response.data[0].tipo,
+        preco: response.data[0].preco,
+        tamanho: JSON.parse(response.data[0].tamanho),
+        cor: JSON.parse(response.data[0].cor),
+        r: true
       })
-      .then(response => {
-        setProduto({
-          id: response.data[0].id_prod,
-          nome: response.data[0].nome,
-          tipo: response.data[0].tipo,
-          preco: response.data[0].preco,
-          tamanho: JSON.parse(response.data[0].tamanho),
-          cor: JSON.parse(response.data[0].cor),
-          r: true
-        })
-      })
-      .catch(error => {
-        console.log(error);
-        navigate('/');
-      })
-    }
-    findProduto(produtoId || '');
-  }, []);
+    })
+    .catch(error => {
+      console.log(error);
+      voltar('/');
+    })
+  }, [produtoId, voltar]);
 
 
   //-------------------------------------------------------------------------
