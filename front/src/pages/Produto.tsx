@@ -29,6 +29,10 @@ type stringId = {
 
 export function Produto() {
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
+
   let navigate = useNavigate();
 
   // get parameter MELHORAR
@@ -228,7 +232,7 @@ export function Produto() {
           </ProdutoViewRight>
 
 
-          <AvisoCarrinho style={{ display: showMiniCart? 'flex' : 'none' }}>
+          <AvisoCarrinho id="avisoCarrinho" style={{ display: showMiniCart? 'flex' : 'none' }}>
             {MiniCarrinho(setShowMiniCart)}
           </AvisoCarrinho>
 
@@ -522,6 +526,7 @@ const ProdutoDescricaoRight = styled.div`
   justify-content: center;
   align-items: center;
 `
+
 
 const AvisoCarrinho = styled.div`
   position: absolute;

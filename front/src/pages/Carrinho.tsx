@@ -41,20 +41,6 @@ export function Carrinho() {
 
   const [cartVazio, setCartVazio] = useState<boolean>(true);
 
-  
-  const calcPrecoTotal = () => {
-    let precoT: number = 0;
-    cartProv.map(c => {
-      let preco: number = NaN;
-      produtos.map(p => {
-        if(p.id === c.id) {
-          preco = p.preco;
-        }
-      })
-      precoT += preco * c.qtd
-    });
-    setPrecoTotal(precoT);
-  }
 
 
   // checar carrinho vazio; calcular preco total; pegar dados de cada produto
@@ -74,7 +60,7 @@ export function Carrinho() {
 
     //-----------------------
 
-    cartProv.map(cp => {
+    cartProv.forEach(cp => {
       const getItem = async (id: string) => {
         axios.get('http://localhost:3001/item', {
           params: { id: id }
@@ -94,18 +80,27 @@ export function Carrinho() {
       getItem(cp.id);
     })
 
-    //-----------------------
-
-    calcPrecoTotal();
-
   }, [cartProv]);
 
 
-  useEffect(() => {
-    calcPrecoTotal();
-  },[produtos]);
 
-  
+  useEffect(() => {
+    let precoT: number = 0;
+
+    cartProv.forEach(c => {
+      let preco: number = NaN;
+      produtos.forEach(p => {
+        if(p.id === c.id) {
+          preco = p.preco;
+        }
+      });
+      precoT += preco * c.qtd
+    });
+
+    setPrecoTotal(precoT);
+
+  },[cartProv, produtos]);
+
 
 
   // funcao remover item de carrinho no hook useCarrinho
@@ -114,6 +109,7 @@ export function Carrinho() {
   const removerItemCart = (item: itemFormato) => {
     removerCarrinho(item);
   }
+
 
 
   // alter true = aparece tela de alterar item, false = some a tela
@@ -125,18 +121,13 @@ export function Carrinho() {
 
   const alterar = (itemAlt: itemFormato, indexAlt:number) => {
 
-    produtos.map(item => {
+    produtos.forEach(item => {
       if(item.id === itemAlt.id) {
-
         setProduto({id: item.id, nome: item.nome, tipo: item.tipo, preco: item.preco, cor: item.cor, tamanho: item.tamanho});
         setProdutoPrev({id: itemAlt.id, cor: itemAlt.cor, tamanho: itemAlt.tamanho, qtd: itemAlt.qtd});
         setIndex(indexAlt);
 
         setAlter(true);
-  
-      } else {
-        // throw error
-        return
       }
     })
 
@@ -206,7 +197,7 @@ export function Carrinho() {
                 let nome: string = '';
                 let preco: string = '';
 
-                produtos.map(p => {
+                produtos.forEach(p => {
                   if(p.id === id) {
                     nome = p.nome;
                     preco = converterPreco(p.preco * qtd);

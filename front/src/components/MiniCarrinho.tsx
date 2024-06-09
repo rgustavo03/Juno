@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import '../css/minicarrinho.css';
 import { CarrinhoIcon } from "./icons/carrinho-icon";
 import { CloseIcon } from "./icons/close-icon";
 import { converterPreco } from "../functions/ConverterPreco";
@@ -27,24 +28,9 @@ export const MiniCarrinho = (setShowMiniCart: funcBoolean) => {
   const [precoTotal, setPrecoTotal] = useState<string>('');
 
 
-  const calcPrecoTotal = () => {
-    let precoT: number = 0;
-    cartProv.map(c => {
-      let preco: number = NaN;
-      produtos.map(p => {
-        if(p.id === c.id) {
-          preco = p.preco;
-        }
-      })
-      precoT += preco * c.qtd
-    });
-    setPrecoTotal(converterPreco(precoT));
-  }
-
 
   useEffect(() => {
-
-    cartProv.map(cp => {
+    cartProv.forEach(cp => {
       const getItem = async (id: string) => {
         axios.get('http://localhost:3001/item', {
           params: { id: id }
@@ -64,15 +50,27 @@ export const MiniCarrinho = (setShowMiniCart: funcBoolean) => {
       getItem(cp.id);
     })
 
-    //-----------------------
-
-    calcPrecoTotal();
-
   },[cartProv]);
 
+
+
   useEffect(() => {
-    calcPrecoTotal();
-  },[produtos]);
+    let precoT: number = 0;
+
+    cartProv.forEach(c => {
+      let preco: number = NaN;
+      produtos.forEach(p => {
+        if(p.id === c.id) {
+          preco = p.preco;
+        }
+      })
+      precoT += preco * c.qtd
+    });
+
+    setPrecoTotal(converterPreco(precoT));
+
+  },[cartProv, produtos]);
+
 
 
   return (
@@ -90,7 +88,7 @@ export const MiniCarrinho = (setShowMiniCart: funcBoolean) => {
           let nome: string = '';
           let preco: string = '';
 
-          produtos.map(p => {
+          produtos.forEach(p => {
             if(p.id === item.id) {
               nome = p.nome;
               preco = converterPreco(p.preco * item.qtd);
@@ -98,18 +96,18 @@ export const MiniCarrinho = (setShowMiniCart: funcBoolean) => {
           });
 
           return (
-            <ItemCart>
+            <ItemCart id="itemCart">
               <ItemCartImgContainer>
                 <ItemCartImg src={require(`../img/produto/${item.id}/${item.id}_${item.cor}_low.png`)} alt={nome} />
               </ItemCartImgContainer>
               <ItemCartInfo>
-                <ItemCartNome>{nome}</ItemCartNome>
+                <ItemCartNome id="nome">{nome}</ItemCartNome>
                 <ItemCartEsp>
-                  <ItemCartEspItem>{item.cor}</ItemCartEspItem>
-                  <ItemCartEspItem>{item.tamanho}</ItemCartEspItem>
-                  <ItemCartEspItem>{item.qtd}</ItemCartEspItem>
+                  <ItemCartEspItem id="itemCartEspItem">{item.cor}</ItemCartEspItem>
+                  <ItemCartEspItem id="itemCartEspItem">{item.tamanho}</ItemCartEspItem>
+                  <ItemCartEspItem id="itemCartEspItem">{item.qtd}</ItemCartEspItem>
                 </ItemCartEsp>
-                <ItemCartPreco>R$ {preco}</ItemCartPreco>
+                <ItemCartPreco id="itemPreco">R$ {preco}</ItemCartPreco>
               </ItemCartInfo>
             </ItemCart>
           )
@@ -118,16 +116,18 @@ export const MiniCarrinho = (setShowMiniCart: funcBoolean) => {
 
       <AvisoCarrinhoBottom>
         <PrecoTotal>
-          <PrecoTotalText>Total: R$</PrecoTotalText>
-          <PrecoTotalValor>{precoTotal}</PrecoTotalValor>
+          <PrecoTotalText id="precoText">Total: R$</PrecoTotalText>
+          <PrecoTotalValor id="precoValor">{precoTotal}</PrecoTotalValor>
         </PrecoTotal>
         <Link to="/carrinho">
-          <IrCarrinhoBtn>Carrinho {`>>`}</IrCarrinhoBtn>
+          <IrCarrinhoBtn id="cartBtn">Carrinho {`>>`}</IrCarrinhoBtn>
         </Link>
       </AvisoCarrinhoBottom>
     </>
   )
 }
+
+
 
 const AvisoCarrinhoTop = styled.div`
   width: auto;
@@ -245,7 +245,8 @@ const PrecoTotalText = styled.p`
 `
 const PrecoTotalValor = styled.p`
   margin: 0;
-  font-size: 21px;
+  margin-top: -4px;
+  font-size: 19px;
 `
 const IrCarrinhoBtn = styled.button`
   margin-right: 7px;

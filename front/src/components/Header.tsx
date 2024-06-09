@@ -24,20 +24,23 @@ export function Header() {
     }
   }
 
+
   const navigate = useNavigate();
 
   const { logged, setLogged, setUser, cartProv } = useContext(UserContext);
 
-  // get carrinho. cart.length
-  const { getQtdCarrinho, limparCarrinho } = useCarrinho('cartStorage');
+  const { limparCarrinho } = useCarrinho('cartStorage');
 
-  let qtdCarrinho: number = getQtdCarrinho();
+
+  const [qtdCarrinho, setQtdCarrinho] = useState<number>(cartProv.length);
 
   useEffect(() => {
-    qtdCarrinho = getQtdCarrinho();
-  }, [cartProv])
+    setQtdCarrinho(cartProv.length);
+  }, [cartProv.length]);
+
 
   const [showOpcoes, setShowOpcoes] = useState<boolean>(false);
+
 
   const sair = () => {
     setLogged(false);
@@ -45,6 +48,7 @@ export function Header() {
     limparCarrinho();
     navigate('/');
   }
+
 
 
   return (
@@ -91,6 +95,8 @@ export function Header() {
     </TagHeader>
   );
 }
+
+
 
 const Perfil = styled.div`
   width: 50px;

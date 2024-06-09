@@ -3,7 +3,7 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import styled from "styled-components"
 import { HeaderAlt } from "../components/HeaderAlt"
 import { RedCheck } from '../components/icons/red-check-icon';
-import { useContext, useEffect } from 'react';
+import { useCallback, useContext, useEffect } from 'react';
 
 import { UserContext } from '../contexts/UserContext';
 
@@ -26,6 +26,10 @@ export const Entrar = () => {
 
   let navigate = useNavigate();
 
+  const voltar = useCallback((h: string) => {
+    navigate(h);
+  }, [navigate]);
+
   // get parameter MELHORAR
   const { ir } = useParams<irParam>();
 
@@ -33,9 +37,9 @@ export const Entrar = () => {
 
   useEffect(() => {
     if(logged) {
-      navigate(`/${ir}`);
+      voltar(`/${ir}`);
     }
-  }, [logged]);
+  }, [logged, voltar, ir]);
 
   const schema: ZodType<FormType> = z.object({
     email: z.string().email(),

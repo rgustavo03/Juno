@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import '../css/home.css';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 
 import { ProdutoComp } from "../components/ProdutoComp";
@@ -28,7 +28,7 @@ type produtoCompProp = {
 
 export function Home() {
 
-  const banners: number[] = [1,2,3,4,5];
+  const banners: number[] = useMemo(() => [1,2,3,4,5], []);
   const [poster, setPoster] = useState<number>(1);
   const [arrastar, setArrastar] = useState<boolean>(true);
 
@@ -37,29 +37,25 @@ export function Home() {
     setArrastar(false);
   }
 
-  const movePoster = () => {
-    if(!arrastar) return
-
-    //if(poster + 1 == 6) {
-    if(poster + 1 === banners.length + 1) {
-      setPoster(1);
-    } else {
-      if(poster === 1) {
-        setPoster(2);
-      } else {
-        setPoster(p => p + 1);
-      }
-    }
-
-  }
-
   useEffect(() => {
-    let timer = setTimeout(movePoster, 10000);
+    let timer = setTimeout(() => {
+      if(!arrastar) return
+
+      if(poster + 1 === banners.length + 1) {
+        setPoster(1);
+      } else {
+        if(poster === 1) {
+          setPoster(2);
+        } else {
+          setPoster(p => p + 1);
+        }
+      }
+    }, 10000);
 
     return () => {
       clearTimeout(timer);
     };
-  }, [poster]);
+  }, [poster, arrastar, banners]);
 
 
   //--------------------------------

@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { HeaderAlt } from "../components/HeaderAlt"
 import { RedCheck } from '../components/icons/red-check-icon';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import { ChangeEvent, useContext, useEffect, useState } from 'react';
+import { ChangeEvent, useCallback, useContext, useEffect, useState } from 'react';
 import { UserContext } from '../contexts/UserContext';
 import axios from 'axios';
 
@@ -55,6 +55,10 @@ export const Cadastrar = () => {
 
   const navigate = useNavigate();
 
+  const voltar = useCallback((h:string) => {
+    navigate(h);
+  }, [navigate]);
+
   // get parameter MELHORAR
   const { ir } = useParams<irParam>();
 
@@ -62,9 +66,9 @@ export const Cadastrar = () => {
 
   useEffect(() => {
     if(logged) {
-      navigate(`/${ir}`);
+      voltar(`/${ir}`);
     }
-  }, [logged]);
+  }, [logged, voltar, ir]);
 
 
   const [ufs, setUfs] = useState<uf[]>([]); // valores para opcoes, nao vai ao submit
@@ -81,7 +85,7 @@ export const Cadastrar = () => {
 
   function handleChangeUf(event: ChangeEvent<HTMLSelectElement>) {
     const uf: string = event.target.value;
-    ufs.map(u => {
+    ufs.forEach(u => {
       if(u.nome === uf) {
         setEstado(u.id);
       }

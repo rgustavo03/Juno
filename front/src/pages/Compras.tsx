@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import '../css/compras.css'
 import { Header } from "../components/Header"
-import { useContext, useEffect, useState } from "react"
+import { useCallback, useContext, useEffect, useState } from "react"
 import { UserContext } from "../contexts/UserContext"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
@@ -28,20 +28,25 @@ export const Compras = () => {
 
   const navigate = useNavigate();
 
+  const voltar = useCallback((h:string) => {
+    navigate(h);
+  }, [navigate]);
+
   const { user, logged, cartProv } = useContext(UserContext);
+
+  useEffect(() => {
+    if(!logged) {
+      voltar(`/`);
+    }
+  }, [logged, voltar]);
+
+
 
   const [compras, setCompras] = useState<compra[]>([]);
 
   const [vazio, setVazio] = useState<boolean>(false);
 
   useEffect(() => {
-    if(!logged) {
-      navigate(`/`);
-    }
-  }, [logged]);
-
-
-  const getCompras = async () => {
     axios.get("http://localhost:3001/compras", {
       params: { id: user.id }
     })
@@ -59,11 +64,8 @@ export const Compras = () => {
     .catch(error => {
       console.log(error);
     })
-  }
+  }, [cartProv, user.id]);
 
-  useEffect(() => {
-    getCompras();
-  }, [cartProv]);
 
 
   const mapCompras = compras.map(({id_compra,data,hora,compra,preco,id_usuario}, i) => {
@@ -104,8 +106,9 @@ export const Compras = () => {
       </Compra>
     )
   })
-  
-  
+
+
+
   return (
     <ComprasPage style={{ display: logged ? 'inline' : 'none'}}>
 
@@ -124,6 +127,8 @@ export const Compras = () => {
     </ComprasPage>
   )
 }
+
+
 
 const ComprasPage = styled.section`
   position: relative;

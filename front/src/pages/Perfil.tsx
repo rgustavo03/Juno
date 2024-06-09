@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { useCallback, useContext, useEffect } from "react"
 import { UserContext } from "../contexts/UserContext"
 import styled from "styled-components"
 import { HeaderAlt } from "../components/HeaderAlt";
@@ -14,11 +14,15 @@ export const Perfil = () => {
 
   const navigate = useNavigate();
 
+  const voltar = useCallback((h: string) => {
+    navigate(h, { replace: true })
+  },[navigate]);
+
   useEffect(() => {
     if(!logged) {
-      navigate('/');
+      voltar('/');
     }
-  }, [logged]);
+  }, [logged, voltar]);
 
   const sair = () => {
     setLogged(false);

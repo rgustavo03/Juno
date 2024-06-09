@@ -1,0 +1,24 @@
+@media only screen and (max-width: 530px) {
+  #itemCart {
+    height: 70px;
+  }
+  #nome {
+    font-size: 14px;
+  }
+  #itemCartEspItem {
+    font-size: 15px;
+  }
+  #itemPreco {
+    font-size: 15px;
+  }
+  #precoText {
+    font-size: 16px;
+  }
+  #precoValor {
+    margin-top: -4px;
+    font-size: 17px;
+  }
+  #cartBtn {
+    font-size: 15px;
+  }
+}
