@@ -60,35 +60,35 @@ export function Home() {
 
   //--------------------------------
 
-  const [torco, setTorco] = useState<produto[]>([]);
+  const [torso, setTorso] = useState<produto[]>([]);
   const [perna, setPerna] = useState<produto[]>([]);
   const [terno, setTerno] = useState<produto[]>([]);
   const [acessorio, setAcessorio] = useState<produto[]>([]);
 
-  const getProdutos = async (tipo: string) => {
-    axios.get("http://localhost:3001/produtos", {
-      params: { tipo: tipo }
-    })
-    .then(response => {
-      tipo === 'torço' && setTorco(response.data)
-      tipo === 'perna' && setPerna(response.data)
-      tipo === 'terno' && setTerno(response.data)
-      tipo === 'acessório' && setAcessorio(response.data)
-    })
-    .catch(error => {
-      console.log(error);
-    })
-  }
-
-  getProdutos('torço');
-  getProdutos('perna');
-  getProdutos('terno');
-  getProdutos('acessório');
-
+  useEffect(() => {
+    const getProdutos = (tipo: string) => {
+      axios.get("http://localhost:3001/produtos", {
+        params: { tipo: tipo }
+      })
+      .then(response => {
+        tipo === 'torso' && setTorso(response.data)
+        tipo === 'perna' && setPerna(response.data)
+        tipo === 'terno' && setTerno(response.data)
+        tipo === 'acessório' && setAcessorio(response.data)
+      })
+      .catch(error => {
+        console.log(error);
+      })
+    }
+    getProdutos('torso');
+    getProdutos('perna');
+    getProdutos('terno');
+    getProdutos('acessório');
+  }, []);
 
   //--------------------------------
 
-  const showTorco = torco.map(({id_prod, nome, tipo, preco, tamanho, cor}, i) => {
+  const showTorso = torso.map(({id_prod, nome, tipo, preco, tamanho, cor}, i) => {
     const prod: produtoCompProp = {
       id_prod: id_prod,
       nome: nome,
@@ -183,7 +183,7 @@ export function Home() {
         <ListaTitulo id="listaTitulo">Camisetas, Blusas e Moletons</ListaTitulo>
           <ListaProdutos>
             {/*------ Array de produtos ------*/}
-            {torco.length !== 0 && showTorco}
+            {torso.length !== 0 && showTorso}
           </ListaProdutos>
         </ListaCamisas>
         
