@@ -1,7 +1,7 @@
 Comando SQL para registrar todos os produtos(tudo de uma vez):
 
-INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('blscmc1', 'Blusa Manga Comprida', 'torço', '9800', '[\"preto\",\"cinza\"]', '[\"M\",\"G\"]');
-INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('blspaf1', 'Blusa Plissada Azul Feminina', 'torço', '8400', '[\"unico\"]', '[\"PP\",\"P\",\"M\",\"G\",\"GG\"]');
+INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('blscmc1', 'Blusa Manga Comprida', 'torso', '9800', '[\"preto\",\"cinza\"]', '[\"M\",\"G\"]');
+INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('blspaf1', 'Blusa Plissada Azul Feminina', 'torso', '8400', '[\"unico\"]', '[\"PP\",\"P\",\"M\",\"G\",\"GG\"]');
 INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('blzfcb1', 'Blazer Preto Feminino Camisa Branca', 'terno', '34000', '[\"unico\"]', '[\"P\",\"M\",\"G\"]');
 INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('blzpcbglx1', 'Blazer Preto Camisa Branca Gravata Listrada Roxa', 'terno', '42000', '[\"unico\"]', '[\"M\",\"G\"]');
 INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('blzscgp1', 'Blazer Smoking Camisa e Gravata Preto', 'terno', '45000', '[\"preto\"]', '[\"M\",\"G\",\"GG\",\"XG\"]');
@@ -15,16 +15,16 @@ INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `taman
 INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('clcjc1', 'Calça Jeans Cargo', 'perna', '9400', '[\"azul\"]', '[\"38\",\"40\",\"42\"]');
 INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('clcjfsf1', 'Calça Jeggings Feminina Slim-Fit', 'perna', '9800', '[\"preta\",\"cinza\"]', '[\"30\",\"32\",\"34\",\"36\"]');
 INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('clclf1', 'Calça Linho Formal', 'perna', '8900', '[\"preto\"]', '[\"38\",\"40\",\"42\"]');
-INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('cmsb1', 'Camisa Branca botões', 'torço', '18000', '[\"unico\"]', '[\"M\",\"G\",\"GG\"]');
-INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('cmstbm1', 'Camiseta Básica Masculina', 'torço', '8500', '[\"preto\",\"branco\",\"marrom\"]', '[\"PP\",\"P\",\"M\",\"G\",\"GG\"]');
-INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('cmstbm2', 'Camiseta Básica Masculina', 'torço', '5600', '[\"azul\",\"amarelo\",\"vermelho\",\"preto\"]', '[\"PP\",\"P\",\"M\",\"G\"]');
-INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('cmstbm3', 'Camiseta Básica Masculina', 'torço', '7500', '[\"branco\",\"preto\",\"vinho\"]', '[\"P\",\"M\",\"G\",\"GG\"]');
-INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('cmstflva1', 'Camiseta Feminina Listrada Vermelho Azul', 'torço', '12000', '[\"unico\"]', '[\"PP\",\"P\",\"M\",\"G\"]');
-INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('cmstpm1', 'Camiseta Polo Masculina', 'torço', '7200', '[\"branco\",\"preto\"]', '[\"M\",\"G\"]');
-INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('cmstts1', 'Camiseta Top Sleeve', 'torço', '6600', '[\"preto\",\"laranja\"]', '[\"P\",\"M\",\"G\",\"GG\",\"XG\"]');
+INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('cmsb1', 'Camisa Branca botões', 'torso', '18000', '[\"unico\"]', '[\"M\",\"G\",\"GG\"]');
+INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('cmstbm1', 'Camiseta Básica Masculina', 'torso', '8500', '[\"preto\",\"branco\",\"marrom\"]', '[\"PP\",\"P\",\"M\",\"G\",\"GG\"]');
+INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('cmstbm2', 'Camiseta Básica Masculina', 'torso', '5600', '[\"azul\",\"amarelo\",\"vermelho\",\"preto\"]', '[\"PP\",\"P\",\"M\",\"G\"]');
+INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('cmstbm3', 'Camiseta Básica Masculina', 'torso', '7500', '[\"branco\",\"preto\",\"vinho\"]', '[\"P\",\"M\",\"G\",\"GG\"]');
+INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('cmstflva1', 'Camiseta Feminina Listrada Vermelho Azul', 'torso', '12000', '[\"unico\"]', '[\"PP\",\"P\",\"M\",\"G\"]');
+INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('cmstpm1', 'Camiseta Polo Masculina', 'torso', '7200', '[\"branco\",\"preto\"]', '[\"M\",\"G\"]');
+INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('cmstts1', 'Camiseta Top Sleeve', 'torso', '6600', '[\"preto\",\"laranja\"]', '[\"P\",\"M\",\"G\",\"GG\",\"XG\"]');
 INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('cntcpu1', 'Cinto Couro Preto Unissex', 'acessório', '7400', '[\"unico\"]', '[\"30\",\"32\",\"34\",\"36\",\"38\"]');
 INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('ggtgcp1', 'Gargantilha Gótica Couro Preto', 'acessório', '4600', '[\"unico\"]', '[\"25cm\"]');
-INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('mltcpz1', 'Moletom com Capuz', 'torço', '12000', '[\"preto\",\"branco\"]', '[\"M\",\"G\",\"GG\"]');
-INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('mltcpz2', 'Moletom com Capuz Cinza', 'torço', '10500', '[\"unico\"]', '[\"P\",\"M\",\"G\",\"GG\"]');
+INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('mltcpz1', 'Moletom com Capuz', 'torso', '12000', '[\"preto\",\"branco\"]', '[\"M\",\"G\",\"GG\"]');
+INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('mltcpz2', 'Moletom com Capuz Cinza', 'torso', '10500', '[\"unico\"]', '[\"P\",\"M\",\"G\",\"GG\"]');
 INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('shrtjfr1', 'Short Jeans Feminino Rasgados', 'perna', '7600', '[\"unico\"]', '[\"30\",\"32\",\"34\"]');
 INSERT INTO `juno`.`produtos` (`id_prod`, `nome`, `tipo`, `preco`, `cor`, `tamanho`) VALUES ('trnmc1', 'Terno Masculino Conjunto Camisa Branca Gravata Preta', 'terno', '68000', '[\"unico\"]', '[\"P\",\"M\",\"G\"]');
