@@ -11,7 +11,7 @@ export function HeaderAlt() {
       
       <Logo>
         <Link to="/" style={{ textDecoration: 'none' }}>
-          <LogoLink>JUNO</LogoLink>
+          <LogoLink id="logo">JUNO</LogoLink>
         </Link>
       </Logo>
 
@@ -21,7 +21,7 @@ export function HeaderAlt() {
 
 
 const TagHeader = styled.header`
-  height: 80px;
+  height: 75px;
   width: auto;
   background-color: white;
   border-bottom: 1px solid #cacaca;

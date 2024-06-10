@@ -8,7 +8,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from '../contexts/UserContext';
 
 
-export function Header() {
+export function HeaderHome() {
 
   const ir = () => {
     if(window.location.pathname.includes('produto')) {
@@ -63,15 +63,17 @@ export function Header() {
         <Carrinho>
           <Link to="/carrinho" style={{ textDecoration: 'none' }}>
             <CarrinhoLink>
-              <Cart src={require(`./icons/cart-preto.png`)} />
-              { qtdCarrinho > 0 && <CarrinhoQtd>{qtdCarrinho > 9? ('9+') : (qtdCarrinho)}</CarrinhoQtd> }
+              <Cart src={require(`./icons/cart-branco.png`)} />
+              {qtdCarrinho > 0 && (
+                <CarrinhoQtd>{qtdCarrinho > 9? ('9+') : (qtdCarrinho)}</CarrinhoQtd>
+              )}
             </CarrinhoLink>
           </Link>
         </Carrinho>
 
         <Perfil onMouseOver={() => setShowOpcoes(true)}  onMouseLeave={() => setShowOpcoes(false)}>
           <PerfilLink>
-            <User src={require(`./icons/user-preto.png`)} />
+            <User src={require(`./icons/user-branco.png`)} />
           </PerfilLink>
           <PerfilOpcoes style={{ display: showOpcoes? 'flex' : 'none' }}>
             {logged? (
@@ -97,9 +99,12 @@ export function Header() {
 
 
 const TagHeader = styled.header`
+  position: absolute;
+  z-index: 2;
   height: 75px;
-  width: auto;
-  background-color: white;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.2);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -118,7 +123,7 @@ const LogoLink = styled.h1`
   text-decoration: none;
   font-size: 33px;
   font-weight: 400;
-  color: black;
+  color: white;
 `;
 
 const HeaderRightSide = styled.div`

@@ -35,7 +35,6 @@ export const ProdutoComp = (p: produtoTipo, i: number) => {
 
 
 const Produto = styled.a`
-  height: 330px;
   width: 275px;
   display: flex;
   flex-direction: column;
@@ -58,6 +57,7 @@ const ProdutoPreco = styled.h4`
   margin: 0;
   font-size: 20px;
   font-weight: 400;
+  margin-bottom: 4px;
 `
 
 const ProdutoCores = styled.div`

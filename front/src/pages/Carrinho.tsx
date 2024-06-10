@@ -299,10 +299,10 @@ const CarrinhoPage = styled.section`
 `;
 
 const CarrinhoBody = styled.section`
-  background-color: #ededed;
+  background-color: #f5f5f5;
   height: auto;
   width: auto;
-  padding-top: 50px;
+  padding-top: 30px;
   padding-bottom: 50px;
   display: grid;
   grid-template-columns: minmax(500px,730px) 1fr;
@@ -475,12 +475,13 @@ const AlterarItemScreen = styled.div`
 `
 
 const AlterItemContainer = styled.div`
+  position: fixed;
   background: rgba(255,255,255);
-  height: 600px;
   width: 500px;
   display: flex;
   flex-direction: column;
   border: 1px solid rgba(145,145,145);
+  padding-bottom: 30px;
 `
 
 const AlterItemContainerTop = styled.div`

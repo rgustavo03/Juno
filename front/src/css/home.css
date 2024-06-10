@@ -1,13 +1,12 @@
 @media only screen and (max-width: 830px) {
   #poster {
-    height: 260px;
-    margin-bottom: 25px;
+    height: 410px;
+    margin-bottom: 10px;
   }
   #lista {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   #produto {
-    height: 300px;
     width: 245px;
   }
   #produtoImg {
@@ -23,8 +22,8 @@
 
 @media only screen and (max-width: 600px) {
   #poster {
-    height: 170px;
-    margin-bottom: 10px;
+    height: 380px;
+    margin-bottom: 8px;
   }
   #posterOpcContainer {
     height: 17px;
@@ -34,17 +33,16 @@
     height: 14px;
   }
   #lista {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
   #listaTitulo {
     margin-top: 1px;
   }
   #produto {
-    height: 285px;
     width: 230px;
   }
   #produtoImg {
-    height: 210px;
+    height: 200px;
   }
   #produtoTitulo {
     font-size: 17px;

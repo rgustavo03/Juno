@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import '../css/home.css';
-import { Header } from '../components/Header';
+import { HeaderHome } from "../components/HeaderHome";
 import { Footer } from '../components/Footer';
 import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
@@ -28,7 +28,7 @@ type produtoCompProp = {
 
 export function Home() {
 
-  const banners: number[] = useMemo(() => [1,2,3,4,5], []);
+  const banners: number[] = useMemo(() => [1,2,3], []);
   const [poster, setPoster] = useState<number>(1);
   const [arrastar, setArrastar] = useState<boolean>(true);
 
@@ -56,7 +56,6 @@ export function Home() {
       clearTimeout(timer);
     };
   }, [poster, arrastar, banners]);
-
 
   //--------------------------------
 
@@ -157,7 +156,7 @@ export function Home() {
     <HomePage>
 
       {/*------ HEADER ------*/}
-      <Header />
+      <HeaderHome />
 
         <Poster id="poster">
           {banners.map(b => {
@@ -216,6 +215,7 @@ export function Home() {
 }
 
 
+
 const HomePage = styled.section`
   font-family: var(--main-font);
   background-color: #f7f7f7;
@@ -223,10 +223,11 @@ const HomePage = styled.section`
 
 const Poster = styled.div`
   position: relative;
-  height: 315px;
+  z-index: 1;
+  height: 475px;
   width: auto;
   background-color: rgb(0, 0, 0);
-  margin-bottom: 50px;
+  margin-bottom: 15px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -240,11 +241,11 @@ const PosterOpcContainer = styled.div`
   position: absolute;
   bottom: 10px;
   height: 20px;
-  width: 200px;
   padding-left: 8px;
   padding-right: 8px;
   display: flex;
   flex-direction: row;
+  column-gap: 15px;
   justify-content: space-between;
   align-items: center;
   background-color: rgba(0,0,0,0.3);
@@ -259,7 +260,6 @@ const PosterOpc = styled.div`
 
 
 
-
 const Lista = styled.div`
   background-color: white;
   display: flex;
@@ -269,7 +269,7 @@ const Lista = styled.div`
   position: relative;
   justify-content: center;
   overflow: hidden;
-  margin-bottom: 35px
+  margin-bottom: 15px;
 `;
 const ListaCalcas = styled(Lista)`
 `;
@@ -289,7 +289,6 @@ const ListaProdutos = styled.div`
   flex-direction: row;
   column-gap: 15px;
   scroll-behavior: smooth;
-  padding-bottom: 7px;
 
   &::-webkit-scrollbar {
     height: 7px;
@@ -307,4 +306,18 @@ const ListaProdutos = styled.div`
   &::-webkit-scrollbar-thumb:hover {
     background: rgb(160, 160, 160);
   }
+`
+
+
+
+const B = styled.div`
+  margin-top: 50px;
+  width: 100%;
+  height: 600px;
+  background: rgb(106,8,8);
+  background: linear-gradient(140deg, rgba(106,8,8,1) 0%, rgba(83,8,8,1) 22%, rgba(41,0,0,1) 100%);
+  background: rgb(120,23,23);
+  background: linear-gradient(140deg, rgba(120,23,23,1) 0%, rgba(82,13,13,1) 36%, rgba(42,0,0,1) 100%);
+  background: rgb(41,111,111);
+  background: linear-gradient(140deg, rgba(41,111,111,1) 0%, rgba(15,79,79,1) 20%, rgba(6,27,27,1) 100%);
 `

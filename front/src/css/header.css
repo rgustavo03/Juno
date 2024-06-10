@@ -1,7 +1,11 @@
 
 @media only screen and (max-width: 800px) {
   #header {
+    height: 70px;
     padding-left: 20px;
     padding-right: 10px;
+  }
+  #logo {
+    font-size: 30px;
   }
 }
