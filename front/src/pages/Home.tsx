@@ -151,6 +151,16 @@ export function Home() {
 
   //--------------------------------
 
+  const arrastarLista = (dir: string, lista: string) => {
+    const arrastar = document.getElementById(lista);
+    if(dir === 'left') {
+      if(arrastar) arrastar.scrollLeft -= 1145;
+    }
+    else if (dir === 'right') {
+      if(arrastar) arrastar.scrollLeft += 1145;
+    }
+  }
+
 
   return (
     <HomePage>
@@ -179,31 +189,50 @@ export function Home() {
         </Poster>
 
         <ListaCamisas id="lista">
-        <ListaTitulo id="listaTitulo">Camisetas, Blusas e Moletons</ListaTitulo>
+          <ListaTitulo id="listaTitulo">Camisetas, Blusas e Moletons</ListaTitulo>
           <ListaProdutos>
-            {/*------ Array de produtos ------*/}
-            {torso.length !== 0 && showTorso}
+            <ListaBtn id="listaBtn" onClick={() => arrastarLista('left', 'torso')}>
+              <BtnArrow src={require(`../components/icons/arrow-left.png`)} style={{ marginRight: '4px' }}/>
+            </ListaBtn>
+            <Produtos id="torso">
+              {torso.length !== 0 && (
+                torso.map(({id_prod, nome, tipo, preco, tamanho, cor}, i) => {
+                  const prod: produtoCompProp = {
+                    id_prod: id_prod,
+                    nome: nome,
+                    preco: preco,
+                    tipo: tipo,
+                    tamanho: JSON.parse(tamanho),
+                    cores: JSON.parse(cor)
+                    }
+                  return <>{ProdutoComp(prod, i)}</>                  
+                })
+              )}
+            </Produtos>
+            <ListaBtn id="listaBtn" onClick={() => arrastarLista('right', 'torso')}>
+              <BtnArrow src={require(`../components/icons/arrow-right.png`)} style={{ marginLeft: '4px' }}/>
+            </ListaBtn>
           </ListaProdutos>
         </ListaCamisas>
         
         <ListaCalcas id="lista">
         <ListaTitulo id="listaTitulo">Calças, Shorts e Bermudas</ListaTitulo>
           <ListaProdutos>
-            {perna.length !== 0 && showPerna}
+            /
           </ListaProdutos>
         </ListaCalcas>
 
         <ListaCalcas id="lista">
         <ListaTitulo id="listaTitulo">Ternos, Roupas formais</ListaTitulo>
           <ListaProdutos>
-            {terno.length !== 0 && showTerno}
+            /
           </ListaProdutos>
         </ListaCalcas>
 
         <ListaCalcas id="lista">
         <ListaTitulo id="listaTitulo">Calças, Shorts e Bermudas</ListaTitulo>
           <ListaProdutos>
-            {acessorio.length !== 0 && showAcessorio}
+            /
           </ListaProdutos>
         </ListaCalcas>
 
@@ -218,7 +247,6 @@ export function Home() {
 
 const HomePage = styled.section`
   font-family: var(--main-font);
-  background-color: #f7f7f7;
 `;
 
 const Poster = styled.div`
@@ -268,8 +296,7 @@ const Lista = styled.div`
   padding-bottom: 5px;
   position: relative;
   justify-content: center;
-  overflow: hidden;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 `;
 const ListaCalcas = styled(Lista)`
 `;
@@ -283,29 +310,33 @@ const ListaTitulo = styled.h2`
   font-weight: 500;
 `
 const ListaProdutos = styled.div`
-  overflow: auto;
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  justify-content: center;
+  align-items: center;
+`
+const ListaBtn = styled.div`
+  background-color: rgba(230,230,230,0.9);
+  height: 50px;
+  aspect-ratio : 1 / 1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`
+const BtnArrow = styled.img`
+  height: 35%;
+`
+const Produtos = styled.div`
+  max-width: 1145px;
+  overflow: hidden;
   flex: 1;
   display: flex;
   flex-direction: row;
   column-gap: 15px;
   scroll-behavior: smooth;
-
-  &::-webkit-scrollbar {
-    height: 7px;
-  }
-  /* Track */
-  &::-webkit-scrollbar-track {
-    border: none;
-  }
-  /* Handle */
-  &::-webkit-scrollbar-thumb {
-    background: rgb(180, 180, 180);
-    border-radius: 10px;
-  }
-  /* Handle on hover */
-  &::-webkit-scrollbar-thumb:hover {
-    background: rgb(160, 160, 160);
-  }
 `
 
 

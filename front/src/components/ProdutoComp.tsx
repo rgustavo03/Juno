@@ -18,9 +18,9 @@ export const ProdutoComp = (p: produtoTipo, i: number) => {
   return (
     <Link to={`/produto/${p.id_prod}`} style={{ textDecoration: 'none' }}>
       <Produto key={i} id="produto">
-        <ProdutoImg id="produtoImg" src={require(`../img/produto/${p.id_prod}/${p.id_prod}_${p.cores[0]}_low.png`)} alt={p.nome} />
-        <ProdutoTitulo id="produtoTitulo">{p.nome}</ProdutoTitulo>
-        <ProdutoPreco id="produtoPreco">R$ {converterPreco(p.preco)}</ProdutoPreco>
+        <ImgDiv>
+          <ProdutoImg id="produtoImg" src={require(`../img/produto/${p.id_prod}/${p.id_prod}_${p.cores[0]}_low.png`)} alt={p.nome} />
+        </ImgDiv>
         <ProdutoCores id="produtoCores">
           {p.cores.map( (c, j) => (
             <OpcaoCor id="opcaoCor" key={j}>
@@ -28,6 +28,8 @@ export const ProdutoComp = (p: produtoTipo, i: number) => {
             </OpcaoCor>
           ))}
         </ProdutoCores>
+        <ProdutoTitulo id="produtoTitulo">{p.nome}</ProdutoTitulo>
+        <ProdutoPreco id="produtoPreco">R$ {converterPreco(p.preco)}</ProdutoPreco>
       </Produto>
     </Link>
   )
@@ -35,6 +37,7 @@ export const ProdutoComp = (p: produtoTipo, i: number) => {
 
 
 const Produto = styled.a`
+  background-color: rgba(230,230,230,0.9);
   width: 275px;
   display: flex;
   flex-direction: column;
@@ -44,9 +47,16 @@ const Produto = styled.a`
   color: black;
   position: relative;
 `
+const ImgDiv = styled.div`
+  height: 275px;
+  aspect-ratio : 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 const ProdutoImg = styled.img`
-  height: 250px;
-  max-width: 100%;
+  height: 95%;
+  max-width: 95%;
 `
 const ProdutoTitulo = styled.h3`
   margin: 0;
@@ -61,18 +71,9 @@ const ProdutoPreco = styled.h4`
 `
 
 const ProdutoCores = styled.div`
-  position: absolute;
-  width: 30px;
-  top: 0;
-  right: 0;
-  border-radius: 3px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  row-gap: 4px;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  flex-direction: row;
+  column-gap: 5px;
 `
 const OpcaoCor = styled.div`
   display: flex;
@@ -80,9 +81,9 @@ const OpcaoCor = styled.div`
   align-items: center;
   border-radius: 50%;
   aspect-ratio : 1 / 1;
-  height: 22px;
+  height: 20px;
   overflow: hidden;
-  border: 1px solid #969696;
+  border: 2px solid #969696;
 `
 const ImgCor = styled.img`
   height: 100%;
