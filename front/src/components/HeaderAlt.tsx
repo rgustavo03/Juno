@@ -21,7 +21,7 @@ export function HeaderAlt() {
 
 
 const TagHeader = styled.header`
-  height: 75px;
+  height: 70px;
   width: auto;
   background-color: white;
   border-bottom: 1px solid #cacaca;
@@ -40,6 +40,6 @@ const Logo = styled.div`
 `;
 const LogoLink = styled.a`
   text-decoration: none;
-  font-size: 33px;
+  font-size: 30px;
   color: black;
 `;

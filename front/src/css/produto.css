@@ -34,22 +34,6 @@
   #produtoViewRight {
     row-gap: 10px;
   }
-  #produtoViewLeft {
-    flex-direction: column-reverse;
-    align-items: center;
-  }
-  #imgDiv {
-    max-height: 300px;
-  }
-  #imgsOpcContainer {
-    flex-direction: row;
-    width: auto;
-    column-gap: 15px;
-  }
-  #imgOpcDiv {
-    height: 50px;
-    aspect-ratio: 1 / 1;
-  }
   #addCartBtn {
     margin-top: 5px;
   }
@@ -63,16 +47,17 @@
 
 @media only screen and (max-width: 530px) {
   #produtoView {
-    min-width: 240px;
+    min-width: 320px;
   }
   #titulo {
+    width: 80%;
     font-size: 23px;
   }
   #preco {
     font-size: 21px;
   }
   #itemTitulo {
-    font-size: 16px;
+    font-size: 17px;
   }
   #addCartBtn {
     padding: 12px;

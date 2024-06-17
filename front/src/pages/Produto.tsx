@@ -69,9 +69,6 @@ export function Produto() {
   //-------------------------------------------------------------------------
   //-------------------------------------------------------------------------
 
-  // cor para show Img
-  const [img, setImg] = useState<string>(produto.cor[0] || '');
-
   // definir elementos do produto que será adicionados ao carrinho
   const [cor, setCor] = useState<string>('');
   const [tamanho, setTamanho] = useState<string>('');
@@ -132,26 +129,11 @@ export function Produto() {
         <ProdutoView id="produtoView" style={{ display: produto.r? 'flex' : 'none' }}>
           <ProdutoViewLeft id="produtoViewLeft">
 
-            <ImgsOpcContainer id="imgsOpcContainer">
-              {produto.cor.map(imgCor => {
-                // code
-                return (
-                  <ImgOpcDiv id="imgOpcDiv">
-                    <ImgOpc 
-                      src={require(`../img/produto/${produto.id}/${produto.id}_${imgCor}.png`)} 
-                      alt={produto.nome} 
-                      onClick={() => setImg(imgCor)}
-                    />
-                  </ImgOpcDiv>
-                )
-              })}
-            </ImgsOpcContainer>
-
             <ImgDiv id="imgDiv">
               {produto.cor[0] &&
                 <ProdutoImg 
                   id="produtoImg" 
-                  src={require(`../img/produto/${produto.id}/${produto.id}_${img === '' ? produto.cor[0] : img}.png`)} 
+                  src={require(`../img/produto/${produto.id}/${produto.id}_${cor === '' ? produto.cor[0] : cor}.png`)} 
                   alt={produto.nome} 
                 />
               }
@@ -307,44 +289,16 @@ const ProdutoViewLeft = styled.div`
   justify-content: space-evenly;
   column-gap: 10px;
 `
-const ImgsOpcContainer = styled.div`
-  width: 70px;
-  min-width: 65px;
-  display: flex;
-  flex-direction: column;
-  row-gap: 15px;
-  padding-top: 10px;
-  overflow: hidden;
-`
-const ImgOpcDiv = styled.div`
-  width: auto;
-  height: 70px;
-  border: 1px solid #cecece;
-  border-radius: 3px;
-  padding: 2px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-`
-const ImgOpc = styled.img`
-  height: 100%;
-`
 const ImgDiv = styled.div`
   display: flex;
   justify-content: center;
   max-height: 500px;
+  min-height: 205px;
   aspect-ratio: 1 / 1;
 `
 const ProdutoImg = styled.img`
   height: 100%;
 `
-
-
-
-
-
-
-
 
 
 

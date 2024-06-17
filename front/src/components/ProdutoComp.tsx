@@ -38,6 +38,7 @@ export const ProdutoComp = (p: produtoTipo, i: number) => {
 
 const Produto = styled.a`
   background-color: rgba(230,230,230,0.9);
+  height: 100%;
   width: 275px;
   display: flex;
   flex-direction: column;
@@ -60,6 +61,9 @@ const ProdutoImg = styled.img`
 `
 const ProdutoTitulo = styled.h3`
   margin: 0;
+  padding-left: 7px;
+  padding-right: 7px;
+  text-align: center;
   font-size: 19px;
   font-weight: 500;
 `

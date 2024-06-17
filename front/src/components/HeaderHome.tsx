@@ -62,7 +62,7 @@ export function HeaderHome() {
 
         <Carrinho>
           <Link to="/carrinho" style={{ textDecoration: 'none' }}>
-            <CarrinhoLink>
+            <CarrinhoLink id="carrinhoLink">
               <Cart src={require(`./icons/cart-branco.png`)} />
               {qtdCarrinho > 0 && (
                 <CarrinhoQtd>{qtdCarrinho > 9? ('9+') : (qtdCarrinho)}</CarrinhoQtd>
@@ -72,7 +72,7 @@ export function HeaderHome() {
         </Carrinho>
 
         <Perfil onMouseOver={() => setShowOpcoes(true)}  onMouseLeave={() => setShowOpcoes(false)}>
-          <PerfilLink>
+          <PerfilLink id="perfilLink">
             <User src={require(`./icons/user-branco.png`)} />
           </PerfilLink>
           <PerfilOpcoes style={{ display: showOpcoes? 'flex' : 'none' }}>
@@ -101,7 +101,7 @@ export function HeaderHome() {
 const TagHeader = styled.header`
   position: absolute;
   z-index: 2;
-  height: 75px;
+  height: 70px;
   left: 0;
   right: 0;
   background-color: rgba(255, 255, 255, 0.2);
@@ -121,7 +121,7 @@ const Logo = styled.div`
 const LogoLink = styled.h1`
   margin: 0;
   text-decoration: none;
-  font-size: 33px;
+  font-size: 30px;
   font-weight: 400;
   color: white;
 `;
@@ -141,7 +141,7 @@ const Carrinho = styled.div`
 `;
 const CarrinhoLink = styled.div`
   position: relative;
-  height: 27px;
+  height: 26px;
   margin-bottom: -3px;
   z-index: 2;
   display: flex;
@@ -176,7 +176,7 @@ const Perfil = styled.div`
   position: relative;
 `;
 const PerfilLink = styled.div`
-  height: 28px;
+  height: 26px;
   margin-bottom: -2px;
   z-index: 2;
   display: flex;
@@ -206,9 +206,9 @@ const LoginCadastro = styled.p`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgb(255,255,255);
   cursor: pointer;
   &:hover {
-    background-color: rgba(255,255,255,0.7);
+    background-color: rgb(235,235,235);
   }
 `

@@ -1,11 +1,38 @@
+
+#listaTerno {
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 @media only screen and (max-width: 830px) {
   #poster {
     height: 410px;
     margin-bottom: 10px;
   }
-  #lista {
-    margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  #poster {
+    height: 380px;
+    margin-bottom: 8px;
   }
+  #posterOpcContainer {
+    height: 17px;
+    bottom: 7px;
+  }
+  #posterOpc {
+    height: 14px;
+  }
+}
+
+
+
+@media only screen and (max-width: 1300px) {
+  #torso, #perna, #terno, #acessorio {
+    min-width: 1025px;
+    max-width: 1025px;
+  }
+
   #produto {
     width: 245px;
   }
@@ -20,29 +47,84 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
-  #poster {
-    height: 380px;
-    margin-bottom: 8px;
+@media only screen and (max-width: 1160px) {
+  #torso, #perna, #terno, #acessorio {
+    min-width: 785px;
+    max-width: 785px;
+    column-gap: 10px;
   }
-  #posterOpcContainer {
-    height: 17px;
-    bottom: 7px;
-  }
-  .posterOpc {
-    height: 14px;
-  }
-  #lista {
-    margin-bottom: 8px;
-  }
-  #listaTitulo {
-    margin-top: 1px;
-  }
+
   #produto {
-    width: 230px;
+    width: 255px;
   }
   #produtoImg {
-    height: 200px;
+    height: 230px;
+  }
+  #produtoTitulo {
+    font-size: 18px;
+  }
+  #produtoPreco {
+    font-size: 19px;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  #torso, #perna, #terno, #acessorio {
+    min-width: 732px;
+    max-width: 732px;
+    column-gap: 6px;
+  }
+
+  #produto {
+    width: 240px;
+  }
+  #produtoImg {
+    height: 215px;
+  }
+  #produtoTitulo {
+    font-size: 16px;
+  }
+  #produtoPreco {
+    font-size: 17px;
+  }
+}
+
+@media only screen and (max-width: 885px) {
+  #torso, #perna, #terno, #acessorio {
+    min-width: 540px;
+    max-width: 540px;
+    column-gap: 10px;
+  }
+
+  #produto {
+    width: 265px;
+  }
+  #produtoImg {
+    height: 240px;
+  }
+  #produtoTitulo {
+    font-size: 18px;
+  }
+  #produtoPreco {
+    font-size: 19px;
+  }
+}
+
+@media only screen and (max-width: 690px) {
+  #torso, #perna, #terno, #acessorio {
+    min-width: 485px;
+    max-width: 485px;
+    column-gap: 5px;
+  }
+  #listaBtnLeft, #listaBtnRight {
+    height: 40px;
+  }
+
+  #produto {
+    width: 240px;
+  }
+  #produtoImg {
+    height: 220px;
   }
   #produtoTitulo {
     font-size: 17px;
@@ -50,10 +132,74 @@
   #produtoPreco {
     font-size: 18px;
   }
-  #produtoCores {
-    width: 26px;
+}
+
+@media only screen and (max-width: 615px) {
+  #listaProdutos {
+    column-gap: 4px;
   }
-  #opcaoCor {
-    height: 20px;
+  #listaBtnLeft {
+    position: absolute;
+    margin-right: 450px;
+  }
+  #listaBtnRight {
+    position: absolute;
+    margin-left: 450px;
+  }
+  #torso, #perna, #terno, #acessorio {
+    min-width: 476px;
+    max-width: 476px;
+    column-gap: 6px;
+  }
+  #listaBtn {
+    height: 40px;
+  }
+
+  #produto {
+    width: 235px;
+  }
+  #produtoImg {
+    height: 215px;
+  }
+  #produtoTitulo {
+    font-size: 17px;
+  }
+  #produtoPreco {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  #listaProdutos {
+    column-gap: 2px;
+  }
+  #listaBtn {
+    position: absolute;
+  }
+  #torso, #perna, #terno, #acessorio {
+    min-width: 445px;
+    max-width: 445px;
+    column-gap: 5px;
+  }
+  #listaBtnLeft {
+    position: absolute;
+    margin-right: 430px;
+  }
+  #listaBtnRight {
+    position: absolute;
+    margin-left: 430px;
+  }
+
+  #produto {
+    width: 220px;
+  }
+  #produtoImg {
+    height: 200px;
+  }
+  #produtoTitulo {
+    font-size: 16px;
+  }
+  #produtoPreco {
+    font-size: 17px;
   }
 }

@@ -1,11 +1,13 @@
 import { styled } from "styled-components";
 import '../css/home.css';
+import { Link } from "react-router-dom";
 import { HeaderHome } from "../components/HeaderHome";
 import { Footer } from '../components/Footer';
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
 
 import { ProdutoComp } from "../components/ProdutoComp";
+import buildings from "../img/produto/bw-buildings.jpg";
 
 type produto = {
   id_prod: string,
@@ -87,83 +89,33 @@ export function Home() {
 
   //--------------------------------
 
-  const showTorso = torso.map(({id_prod, nome, tipo, preco, tamanho, cor}, i) => {
-    const prod: produtoCompProp = {
-      id_prod: id_prod,
-      nome: nome,
-      preco: preco,
-      tipo: tipo,
-      tamanho: JSON.parse(tamanho),
-      cores: JSON.parse(cor)
-    }
-    return (
-      <>{ProdutoComp(prod, i)}</>
-    )
-  });
+  const homePage = useRef() as React.MutableRefObject<HTMLDivElement>;
 
-  //--------------------------------
+  const arrastarLista = (dir: string, id: string) => {
+    const widthPage = homePage.current.offsetWidth;
+    const lista = document.getElementById(id);
+    let arrastar = NaN;
 
-  const showPerna = perna.map(({id_prod, nome, tipo, preco, tamanho, cor}, i) => {
-    const prod: produtoCompProp = {
-      id_prod: id_prod,
-      nome: nome,
-      preco: preco,
-      tipo: tipo,
-      tamanho: JSON.parse(tamanho),
-      cores: JSON.parse(cor)
-    }
-    return (
-      <>{ProdutoComp(prod, i)}</>
-    )
-  });
-
-  //--------------------------------
-
-  const showTerno = terno.map(({id_prod, nome, tipo, preco, tamanho, cor}, i) => {
-    const prod: produtoCompProp = {
-      id_prod: id_prod,
-      nome: nome,
-      preco: preco,
-      tipo: tipo,
-      tamanho: JSON.parse(tamanho),
-      cores: JSON.parse(cor)
-    }
-    return (
-      <>{ProdutoComp(prod, i)}</>
-    )
-  });
-
-  //--------------------------------
-
-  const showAcessorio = acessorio.map(({id_prod, nome, tipo, preco, tamanho, cor}, i) => {
-    const prod: produtoCompProp = {
-      id_prod: id_prod,
-      nome: nome,
-      preco: preco,
-      tipo: tipo,
-      tamanho: JSON.parse(tamanho),
-      cores: JSON.parse(cor)
-    }
-    return (
-      <>{ProdutoComp(prod, i)}</>
-    )
-  });
-
-  //--------------------------------
-
-  const arrastarLista = (dir: string, lista: string) => {
-    const arrastar = document.getElementById(lista);
+    if(widthPage > 1300) arrastar = 290 * 4
+    if(widthPage > 1160 && widthPage <= 1300) arrastar = 260 * 4
+    if(widthPage > 950 && widthPage <= 1160) arrastar = 265 * 3
+    if(widthPage > 885 && widthPage <= 950) arrastar = 246 * 3
+    if(widthPage > 690 && widthPage <= 885) arrastar = 275 * 2
+    if(widthPage > 615 && widthPage <= 690) arrastar = 245 * 2
+    if(widthPage > 530 && widthPage <= 615) arrastar = 241 * 2
+    if(widthPage <= 530) arrastar = 225 * 2
+    
     if(dir === 'left') {
-      if(arrastar) arrastar.scrollLeft -= 1145;
+      if(lista) lista.scrollLeft -= arrastar;
     }
     else if (dir === 'right') {
-      if(arrastar) arrastar.scrollLeft += 1145;
+      if(lista) lista.scrollLeft += arrastar;
     }
   }
 
 
   return (
-    <HomePage>
+    <HomePage ref={homePage}>
 
       {/*------ HEADER ------*/}
       <HeaderHome />
@@ -188,13 +140,14 @@ export function Home() {
           </PosterOpcContainer>
         </Poster>
 
-        <ListaCamisas id="lista">
+        <Lista id="lista">
           <ListaTitulo id="listaTitulo">Camisetas, Blusas e Moletons</ListaTitulo>
-          <ListaProdutos>
-            <ListaBtn id="listaBtn" onClick={() => arrastarLista('left', 'torso')}>
+          <ListaProdutos id="listaProdutos">
+            <ListaBtn id="listaBtnLeft" onClick={() => arrastarLista('left', 'torso')}>
               <BtnArrow src={require(`../components/icons/arrow-left.png`)} style={{ marginRight: '4px' }}/>
             </ListaBtn>
             <Produtos id="torso">
+              {/*---- Array de Produtos ----*/}
               {torso.length !== 0 && (
                 torso.map(({id_prod, nome, tipo, preco, tamanho, cor}, i) => {
                   const prod: produtoCompProp = {
@@ -204,37 +157,103 @@ export function Home() {
                     tipo: tipo,
                     tamanho: JSON.parse(tamanho),
                     cores: JSON.parse(cor)
-                    }
-                  return <>{ProdutoComp(prod, i)}</>                  
+                  }
+                  return <Link to={`/produto/${id_prod}`}>{ProdutoComp(prod, i)}</Link>
                 })
               )}
             </Produtos>
-            <ListaBtn id="listaBtn" onClick={() => arrastarLista('right', 'torso')}>
+            <ListaBtn id="listaBtnRight" onClick={() => arrastarLista('right', 'torso')}>
               <BtnArrow src={require(`../components/icons/arrow-right.png`)} style={{ marginLeft: '4px' }}/>
             </ListaBtn>
           </ListaProdutos>
-        </ListaCamisas>
-        
-        <ListaCalcas id="lista">
-        <ListaTitulo id="listaTitulo">Calças, Shorts e Bermudas</ListaTitulo>
-          <ListaProdutos>
-            /
-          </ListaProdutos>
-        </ListaCalcas>
+        </Lista>
 
-        <ListaCalcas id="lista">
-        <ListaTitulo id="listaTitulo">Ternos, Roupas formais</ListaTitulo>
-          <ListaProdutos>
-            /
-          </ListaProdutos>
-        </ListaCalcas>
 
-        <ListaCalcas id="lista">
-        <ListaTitulo id="listaTitulo">Calças, Shorts e Bermudas</ListaTitulo>
+        <Lista id="lista">
+          <ListaTitulo id="listaTitulo">Calças, Shorts e Bermudas</ListaTitulo>
           <ListaProdutos>
-            /
+          <ListaBtn id="listaBtnLeft" onClick={() => arrastarLista('left', 'perna')}>
+              <BtnArrow src={require(`../components/icons/arrow-left.png`)} style={{ marginRight: '4px' }}/>
+            </ListaBtn>
+            <Produtos id="perna">
+              {/*---- Array de Produtos ----*/}
+              {perna.length !== 0 && (
+                perna.map(({id_prod, nome, tipo, preco, tamanho, cor}, i) => {
+                  const prod: produtoCompProp = {
+                    id_prod: id_prod,
+                    nome: nome,
+                    preco: preco,
+                    tipo: tipo,
+                    tamanho: JSON.parse(tamanho),
+                    cores: JSON.parse(cor)
+                  }
+                  return <Link to={`/produto/${id_prod}`}>{ProdutoComp(prod, i)}</Link>
+                })
+              )}
+            </Produtos>
+            <ListaBtn id="listaBtnRight" onClick={() => arrastarLista('right', 'perna')}>
+              <BtnArrow src={require(`../components/icons/arrow-right.png`)} style={{ marginLeft: '4px' }}/>
+            </ListaBtn>
           </ListaProdutos>
-        </ListaCalcas>
+        </Lista>
+
+
+        <Lista id="listaTerno" style={{ backgroundImage: `url(${buildings}), linear-gradient(140deg, #0a0a0a 0%, #000000 20%, #272528 100%)` }}>
+          <ListaTitulo id="listaTitulo" style={{ color: 'white' }}>Ternos, roupas formais</ListaTitulo>
+          <ListaProdutos>
+          <ListaBtn id="listaBtnLeft" onClick={() => arrastarLista('left', 'terno')}>
+              <BtnArrow src={require(`../components/icons/arrow-left.png`)} style={{ marginRight: '4px' }}/>
+            </ListaBtn>
+            <Produtos id="terno">
+              {/*---- Array de Produtos ----*/}
+              {terno.length !== 0 && (
+                terno.map(({id_prod, nome, tipo, preco, tamanho, cor}, i) => {
+                  const prod: produtoCompProp = {
+                    id_prod: id_prod,
+                    nome: nome,
+                    preco: preco,
+                    tipo: tipo,
+                    tamanho: JSON.parse(tamanho),
+                    cores: JSON.parse(cor)
+                  }
+                  return <Link to={`/produto/${id_prod}`}>{ProdutoComp(prod, i)}</Link>
+                })
+              )}
+            </Produtos>
+            <ListaBtn id="listaBtnRight" onClick={() => arrastarLista('right', 'terno')}>
+              <BtnArrow src={require(`../components/icons/arrow-right.png`)} style={{ marginLeft: '4px' }}/>
+            </ListaBtn>
+          </ListaProdutos>
+        </Lista>
+
+
+        <Lista id="lista">
+          <ListaTitulo id="listaTitulo">Acessórios</ListaTitulo>
+          <ListaProdutos>
+          <ListaBtn id="listaBtnLeft" onClick={() => arrastarLista('left', 'acessorio')}>
+              <BtnArrow src={require(`../components/icons/arrow-left.png`)} style={{ marginRight: '4px' }}/>
+            </ListaBtn>
+            <Produtos id="acessorio">
+              {/*---- Array de Produtos ----*/}
+              {acessorio.length !== 0 && (
+                acessorio.map(({id_prod, nome, tipo, preco, tamanho, cor}, i) => {
+                  const prod: produtoCompProp = {
+                    id_prod: id_prod,
+                    nome: nome,
+                    preco: preco,
+                    tipo: tipo,
+                    tamanho: JSON.parse(tamanho),
+                    cores: JSON.parse(cor)
+                  }
+                  return <Link to={`/produto/${id_prod}`}>{ProdutoComp(prod, i)}</Link>
+                })
+              )}
+            </Produtos>
+            <ListaBtn id="listaBtnRight" onClick={() => arrastarLista('right', 'acessorio')}>
+              <BtnArrow src={require(`../components/icons/arrow-right.png`)} style={{ marginLeft: '4px' }}/>
+            </ListaBtn>
+          </ListaProdutos>
+        </Lista>
 
       {/*------ FOOTER ------*/}
       <Footer />
@@ -245,7 +264,7 @@ export function Home() {
 
 
 
-const HomePage = styled.section`
+const HomePage = styled.div`
   font-family: var(--main-font);
 `;
 
@@ -298,10 +317,6 @@ const Lista = styled.div`
   justify-content: center;
   margin-bottom: 30px;
 `;
-const ListaCalcas = styled(Lista)`
-`;
-const ListaCamisas = styled(Lista)`
-`;
 const ListaTitulo = styled.h2`
   margin: 0;
   padding-top: 5px;
@@ -315,9 +330,11 @@ const ListaProdutos = styled.div`
   column-gap: 10px;
   justify-content: center;
   align-items: center;
+  position: relative;
 `
 const ListaBtn = styled.div`
-  background-color: rgba(230,230,230,0.9);
+  z-index: 2;
+  background-color: rgba(251,251,251,0.9);
   height: 50px;
   aspect-ratio : 1 / 1;
   border-radius: 50%;
@@ -325,12 +342,17 @@ const ListaBtn = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  &:hover {
+    background-color: rgb(255,255,255);
+  }
 `
 const BtnArrow = styled.img`
-  height: 35%;
+  height: 30%;
 `
 const Produtos = styled.div`
+  z-index: 1;
   max-width: 1145px;
+  min-width: 1145px;
   overflow: hidden;
   flex: 1;
   display: flex;
@@ -339,8 +361,7 @@ const Produtos = styled.div`
   scroll-behavior: smooth;
 `
 
-
-
+/*
 const B = styled.div`
   margin-top: 50px;
   width: 100%;
@@ -352,3 +373,4 @@ const B = styled.div`
   background: rgb(41,111,111);
   background: linear-gradient(140deg, rgba(41,111,111,1) 0%, rgba(15,79,79,1) 20%, rgba(6,27,27,1) 100%);
 `
+*/
